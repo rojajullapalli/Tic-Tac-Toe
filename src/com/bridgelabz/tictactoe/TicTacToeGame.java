@@ -5,8 +5,11 @@ import java.util.Scanner;
 
 public class TicTacToeGame {
     static Scanner userInput = new Scanner(System.in);
+    static char userLetter;
+    static char computerLetter;
+    static char[] board = new char[10];
+
     public static char[] createBoard() {
-        char[] board = new char[10];
         for (int i = 0; i < board.length; i++) {
             board[i] = ' ';
         }
@@ -20,7 +23,7 @@ public class TicTacToeGame {
 
 
 
-    public static void showBoard(char[] board) {
+    public static void showBoard() {
         System.out.println("|-----------|");
         System.out.println("| " + board[1] + " | " + board[2] + " | " + board[3] + " |");
         System.out.println("|-----------|");
@@ -31,25 +34,40 @@ public class TicTacToeGame {
     }
 
 
-    public static void makeMove(char board[],char userLetter) {
+    public static void makeMove() {
         System.out.print("Select location between 1-9 : ");
         int location = userInput.nextInt();
         if (board[location] != ' ') {
             System.out.println("Position Already Occupied");
+            makeMove();
         }
         else {
             board[location] = userLetter;
-            showBoard(board);
+        }
+    }
+
+    public static void toss() {
+        System.out.println("Toss Time - Press 0 for Head And 1 for Tail: ");
+        int check = userInput.nextInt();
+        int chance =(int) (Math.random() * 2);
+        if (chance == check) {
+            System.out.println("You Won the Toss");
+            System.out.println("Your Turn");
+            makeMove();
+            showBoard();
+        }
+        else {
+            System.out.println("You Lose the Toss");
+            System.out.println("Computer Turn");
         }
     }
 
     public static void main(String[] args) {
         System.out.println("welcome to tic tac toe problem");
-        Scanner userInput = new Scanner(System.in);
         char[] board = createBoard();
-        char userLetter = chooseUserLetter(userInput);
+        userLetter = chooseUserLetter(userInput);
         char computerLetter = (userLetter == 'X') ? 'O' : 'X';
-        showBoard(board);
-        makeMove(board,userLetter);
+        showBoard();
+        toss();
     }
 }
