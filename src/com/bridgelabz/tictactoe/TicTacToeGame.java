@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class TicTacToeGame {
-
+    static Scanner userInput = new Scanner(System.in);
     public static char[] createBoard() {
         char[] board = new char[10];
         for (int i = 0; i < board.length; i++) {
@@ -30,24 +30,18 @@ public class TicTacToeGame {
         System.out.println("|-----------|");
     }
 
-    public static boolean isIndexIsFree(char[] gameBoard, int position) {
-        if (position > 9) {
-            System.out.println("Please enter valid index from (1-9)");
-            return false;
+
+    public static void makeMove(char board[],char userLetter) {
+        System.out.print("Select location between 1-9 : ");
+        int location = userInput.nextInt();
+        if (board[location] != ' ') {
+            System.out.println("Position Already Occupied");
         }
-        if (gameBoard[position] == ' ') {
-            return true;
-        } else {
-            System.out.println("Index is not free");
-            return false;
+        else {
+            board[location] = userLetter;
+            showBoard(board);
         }
     }
-
-    public static void userMove(char[] Board, int position,char userLetter) {
-            Board[position] = userLetter ;
-    }
-
-
 
     public static void main(String[] args) {
         System.out.println("welcome to tic tac toe problem");
@@ -56,14 +50,6 @@ public class TicTacToeGame {
         char userLetter = chooseUserLetter(userInput);
         char computerLetter = (userLetter == 'X') ? 'O' : 'X';
         showBoard(board);
-        System.out.println("enter the position where he want to enter");
-        int position=userInput.nextInt();
-        boolean result = isIndexIsFree(board,position);
-        if(result == true) {
-            userMove(board,position,userLetter);
-            System.out.println("after entering the user position");
-            showBoard(board);
-        }
-
+        makeMove(board,userLetter);
     }
 }
