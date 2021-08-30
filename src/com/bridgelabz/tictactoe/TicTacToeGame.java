@@ -12,33 +12,17 @@ public class TicTacToeGame {
         return board;
     }
 
-    public static char chooseLetter() {
-        char user;
-        char computer =0 ;
-        Scanner sc = new Scanner(System.in);
-        System.out.println("1. X");
-        System.out.println("2. O");
-        System.out.println("Enter case number to choose letter:- ");
-        int result = sc.nextInt();
-        if (result == 1) {
-            user = 'X';
-            System.out.println("user selects " +user);
-        }
-         else {
-            user = 'O';
-            System.out.println("user selects " +user);
-        }
-        return computer;
-
-}
+    public static char chooseUserLetter(Scanner userInput) {
+        System.out.println("Choose Your Letter X or O: ");
+        return userInput.next().toUpperCase().charAt(0);
+    }
 
 
     public static void main(String[] args) {
         System.out.println("welcome to tic tac toe problem");
-        createBoard();
-        chooseLetter();
-
+        Scanner userInput = new Scanner(System.in);
+        char[] board = createBoard();
+        char userLetter = chooseUserLetter(userInput);
+        char computerLetter = (userLetter == 'X') ? 'O' : 'X';
     }
-
-
 }
