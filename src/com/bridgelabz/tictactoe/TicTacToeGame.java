@@ -1,5 +1,6 @@
 package com.bridgelabz.tictactoe;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class TicTacToeGame {
@@ -17,6 +18,8 @@ public class TicTacToeGame {
         return userInput.next().toUpperCase().charAt(0);
     }
 
+
+
     public static void showBoard(char[] board) {
         System.out.println("|-----------|");
         System.out.println("| " + board[1] + " | " + board[2] + " | " + board[3] + " |");
@@ -27,6 +30,24 @@ public class TicTacToeGame {
         System.out.println("|-----------|");
     }
 
+    public static boolean isIndexIsFree(char[] gameBoard, int position) {
+        if (position > 9) {
+            System.out.println("Please enter valid index from (1-9)");
+            return false;
+        }
+        if (gameBoard[position] == ' ') {
+            return true;
+        } else {
+            System.out.println("Index is not free");
+            return false;
+        }
+    }
+
+    public static void userMove(char[] Board, int position,char userLetter) {
+            Board[position] = userLetter ;
+    }
+
+
 
     public static void main(String[] args) {
         System.out.println("welcome to tic tac toe problem");
@@ -35,5 +56,14 @@ public class TicTacToeGame {
         char userLetter = chooseUserLetter(userInput);
         char computerLetter = (userLetter == 'X') ? 'O' : 'X';
         showBoard(board);
+        System.out.println("enter the position where he want to enter");
+        int position=userInput.nextInt();
+        boolean result = isIndexIsFree(board,position);
+        if(result == true) {
+            userMove(board,position,userLetter);
+            System.out.println("after entering the user position");
+            showBoard(board);
+        }
+
     }
 }
