@@ -75,11 +75,10 @@ public class TicTacToeGame {
         }
     }
     public static void makeMove(char computerChoice) {
-        System.out.print("Select location between 1-9 : ");
-        int location = userInput.nextInt();
+        int location = (int) (Math.random() * 10);
         if (board[location] != ' ') {
             System.out.println("Position Already Occupied");
-            makeMove();
+            makeMove(computerChoice);
         } else {
             board[location] = computerChoice;
         }
