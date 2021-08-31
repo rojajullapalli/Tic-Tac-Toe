@@ -151,16 +151,25 @@ public class TicTacToeGame {
             }
         }
     }
-
-
-    public static void main(String[] args) {
-        System.out.println("Welcome to TicTacToeGame");
+    public static void iscontinue(){
         conditionsForWin();
         createBoard();
         chooseLetter();
-        System.out.println("Computer Letter: " +computerLetter);
+        System.out.println("Computer Letter: " + computerLetter);
         showBoard();
         toss();
         turn();
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Welcome to TicTacToeGame");
+        while(true) {
+            System.out.println("enter you want to play \n1.Yes 2.No");
+            int play=userInput.nextInt();
+            if(play==1)
+                iscontinue();
+            else
+                break;
+        }
     }
 }
