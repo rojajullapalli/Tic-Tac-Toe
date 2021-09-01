@@ -105,6 +105,60 @@ public class TicTacToeGame {
         }
     }
 
+    public static void computerWin(char computerChoice){
+        if(board[1]==computerChoice && board[2]==computerChoice && board[3]!=userLetter||
+                board[5]==computerChoice && board[7]==computerChoice && board[3]!=userLetter ||
+                board[9]==computerChoice && board[6]==computerChoice &&  board[3]!=userLetter)
+            board[3]=computerChoice;
+        else if(board[2]==computerChoice && board[3]==computerChoice &&  board[1]!=userLetter||
+                board[4]==computerChoice && board[7]==computerChoice && board[1]!=userLetter ||
+                board[5]==computerChoice && board[9]==computerChoice && board[1]!=userLetter)
+            board[1]=computerChoice;
+        else if(board[1]==computerChoice && board[3]==computerChoice && board[2]!=userLetter||
+                board[5]==computerChoice && board[8]==computerChoice && board[2]!=userLetter)
+            board[2]=computerChoice;
+        else if(board[1]==computerChoice && board[7]==computerChoice && board[4]!=userLetter||
+                board[5]==computerChoice && board[6]==computerChoice && board[4]!=userLetter)
+            board[4]=computerChoice;
+        else if(board[1]==computerChoice && board[9]==computerChoice && board[5]!=userLetter||
+                board[3]==computerChoice && board[7]==computerChoice && board[5]!=userLetter ||
+                board[4]==computerChoice && board[6]==computerChoice && board[5]!=userLetter||
+                board[2]==computerChoice && board[8]==computerChoice && board[5]!=userLetter)
+            board[5]=computerChoice;
+        else if(board[3]==computerChoice && board[9]==computerChoice && board[6]!=userLetter||
+                board[4]==computerChoice && board[5]==computerChoice && board[6]!=userLetter)
+            board[6]=computerChoice;
+        else if(board[1]==computerChoice && board[4]==computerChoice && board[7]!=userLetter||
+                board[8]==computerChoice && board[9]==computerChoice && board[7]!=userLetter||
+                board[3]==computerChoice && board[5]==computerChoice && board[7]!=userLetter )
+            board[7]=computerChoice;
+        else if(board[2]==computerChoice && board[5]==computerChoice && board[8]!=userLetter ||
+                board[7]==computerChoice && board[9]==computerChoice && board[8]!=userLetter)
+            board[8]=computerChoice;
+        else if(board[1]==computerChoice && board[5]==computerChoice  && board[9]!=userLetter||
+                board[3]==computerChoice && board[6]==computerChoice  && board[9]!=userLetter||
+                board[7]==computerChoice && board[8]==computerChoice  && board[9]!=userLetter)
+            board[9]=computerChoice;
+        else{
+            computerBlock(computerChoice);
+        }
+    }
+
+
+    public static void noOneWinning(char[] boardCells) {
+        if (boardCells[1] == '-')
+            computerLetter = boardCells[1];
+
+        if (boardCells[3] == '-')
+            computerLetter = boardCells[3];
+
+        if (boardCells[7] == '-')
+            computerLetter = boardCells[7];
+
+        if (boardCells[9] == '-')
+            computerLetter = boardCells[9];
+    }
+
 
 
     public static void toss() {
@@ -166,7 +220,7 @@ public class TicTacToeGame {
                     showBoard();
                 } else {
                     System.out.println("Computer Turn");
-                    computerBlock(computerLetter);
+                    computerWin(computerLetter);
                     showBoard();
                 }
                 count++;
