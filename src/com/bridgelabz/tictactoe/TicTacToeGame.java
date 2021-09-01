@@ -74,15 +74,37 @@ public class TicTacToeGame {
             board[location] = userLetter;
         }
     }
-    public static void makeMove(char computerChoice) {
-        int location = (int) (Math.random() * 10);
-        if (board[location] != ' ') {
-            System.out.println("Position Already Occupied");
-            makeMove(computerChoice);
-        } else {
-            board[location] = computerChoice;
+
+    public static void computerBlock(char computerChoice){
+        if(board[1]==userLetter && board[2]==userLetter || board[5]==userLetter && board[7]==userLetter || board[9]==userLetter && board[6]==userLetter)
+            board[3]=computerChoice;
+        else if(board[2]==userLetter && board[3]==userLetter || board[4]==userLetter && board[7]==userLetter || board[5]==userLetter && board[9]==userLetter)
+            board[1]=computerChoice;
+        else if(board[1]==userLetter && board[3]==userLetter || board[5]==userLetter && board[8]==userLetter)
+            board[2]=computerChoice;
+        else if(board[1]==userLetter && board[7]==userLetter || board[5]==userLetter && board[6]==userLetter)
+            board[4]=computerChoice;
+        else if(board[1]==userLetter && board[9]==userLetter || board[3]==userLetter && board[7]==userLetter || board[4]==userLetter && board[6]==userLetter || board[2]==userLetter && board[8]==userLetter)
+            board[5]=computerChoice;
+        else if(board[3]==userLetter && board[9]==userLetter || board[4]==userLetter && board[5]==userLetter)
+            board[6]=computerChoice;
+        else if(board[1]==userLetter && board[4]==userLetter || board[8]==userLetter && board[9]==userLetter || board[3]==userLetter && board[5]==userLetter )
+            board[7]=computerChoice;
+        else if(board[2]==userLetter && board[5]==userLetter || board[7]==userLetter && board[9]==userLetter)
+            board[8]=computerChoice;
+        else if(board[1]==userLetter && board[5]==userLetter || board[3]==userLetter && board[6]==userLetter || board[7]==userLetter && board[8]==userLetter )
+            board[9]=computerChoice;
+        else{
+            int location = (int) (Math.random() * 10);
+            if (board[location] != ' ') {
+                System.out.println("Position Already Occupied");
+                computerBlock(computerChoice);
+            } else {
+                board[location] = computerChoice;
+            }
         }
     }
+
 
 
     public static void toss() {
@@ -144,7 +166,7 @@ public class TicTacToeGame {
                     showBoard();
                 } else {
                     System.out.println("Computer Turn");
-                    makeMove(computerLetter);
+                    computerBlock(computerLetter);
                     showBoard();
                 }
                 count++;
