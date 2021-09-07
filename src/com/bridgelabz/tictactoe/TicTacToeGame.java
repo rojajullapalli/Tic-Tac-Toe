@@ -145,20 +145,46 @@ public class TicTacToeGame {
     }
 
 
-    public static void noOneWinning(char[] boardCells) {
-        if (boardCells[1] == '-')
-            computerLetter = boardCells[1];
+    public static boolean noOneWinning(char[] board) {
+        if (board[1] == '-') {
+            board[1] = computerLetter;
+            return true;
 
-        if (boardCells[3] == '-')
-            computerLetter = boardCells[3];
+        } else if (board[3] == '-') {
+            board[3] = computerLetter;
+            return true;
 
-        if (boardCells[7] == '-')
-            computerLetter = boardCells[7];
+        } else if (board[7] == '-') {
+            board[7] = computerLetter;
+            return true;
 
-        if (boardCells[9] == '-')
-            computerLetter = boardCells[9];
+        } else if (board[9] == '-') {
+            board[9] = computerLetter;
+            return true;
+
+        } else if (board[5] == '-') {
+            board[5] = computerLetter;
+            return true;
+
+        } else if (board[2] == '-') {
+            board[2] = computerLetter;
+            return true;
+
+        } else if (board[4] == '-') {
+            board[4] = computerLetter;
+            return true;
+
+        } else if (board[6] == '-') {
+            board[6] = computerLetter;
+            return true;
+
+        } else if (board[8] == '-') {
+            board[8] = computerLetter;
+            return true;
+        }
+
+        return false;
     }
-
 
 
     public static void toss() {
@@ -235,6 +261,47 @@ public class TicTacToeGame {
         showBoard();
         toss();
         turn();
+    }
+
+    public static boolean noOneWinning(char[] boardCells) {
+        if (boardCells[1] == '-') {
+            boardCells[1] = computerLetter;
+            return true;
+
+        } else if (boardCells[3] == '-') {
+            boardCells[3] = computerLetter;
+            return true;
+
+        } else if (boardCells[7] == '-') {
+            boardCells[7] = computerLetter;
+            return true;
+
+        } else if (boardCells[9] == '-') {
+            boardCells[9] = computerLetter;
+            return true;
+
+        } else if (boardCells[5] == '-') {
+            boardCells[5] = computerLetter;
+            return true;
+
+        } else if (boardCells[2] == '-') {
+            boardCells[2] = computerLetter;
+            return true;
+
+        } else if (boardCells[4] == '-') {
+            boardCells[4] = computerLetter;
+            return true;
+
+        } else if (boardCells[6] == '-') {
+            boardCells[6] = computerLetter;
+            return true;
+
+        } else if (boardCells[8] == '-') {
+            boardCells[8] = computerLetter;
+            return true;
+        }
+
+        return false;
     }
 
     public static void main(String[] args) {
